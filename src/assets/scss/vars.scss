@@ -1,0 +1,10 @@
+@mixin flex($justify: flex-start, $align: center, $dir: row, $inline: block) {
+  @if $inline == inline {
+    display: inline-flex;
+  } @else {
+    display: flex;
+  }
+  flex-direction: $dir;
+  justify-content: $justify;
+  align-items: $align;
+}
