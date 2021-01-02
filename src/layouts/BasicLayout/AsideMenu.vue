@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <a-menu
-      :default-selected-keys="['1']"
+      :default-selected-keys="['2-2']"
       :default-open-keys="['2']"
       mode="inline"
       theme="dark"
@@ -9,7 +9,7 @@
     >
       <template v-for="item in list">
         <!-- 普通菜单 -->
-        <a-menu-item v-if="!item.children" :key="item.key">
+        <a-menu-item v-if="!item.children" :key="item.key" @click="link(item.path)">
           <a-icon :type="item.icon" />
           <span>{{ item.title }}</span>
         </a-menu-item>
@@ -18,7 +18,7 @@
           <template #title>
             <a-icon :type="item.icon" /><span>{{item.title}}</span>
           </template>
-          <a-menu-item :key="el.key" v-for="el in item.children">
+          <a-menu-item v-for="el in item.children" :key="el.key" @click="link(el.path)">
             {{ el.title }}
           </a-menu-item>
         </a-sub-menu>
@@ -28,7 +28,7 @@
 </template>
 
 <script>
-import menuConfig from './menuConfig'
+import menuConfig from '@/config/aside-menu'
 
 export default {
   props: {
@@ -39,7 +39,12 @@ export default {
   },
   data: () => ({
     list: menuConfig
-  })
+  }),
+  methods: {
+    link (path) {
+      this.$router.push(path)
+    }
+  }
 }
 </script>
 

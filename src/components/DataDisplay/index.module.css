@@ -1,0 +1,10 @@
+.pagination {
+  align-self: flex-end;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px 0;
+}

@@ -17,11 +17,16 @@ export default {
 
 <style lang="scss" scoped>
 .container{
-  height: 90vh;
+  height: 100vh;
+  padding-bottom: 10vh;
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
+  background-image: url('~@/assets/images/user-layout-background.png');
+  background-position: center;
+  background-size: cover;
 
   .header{
     font-size: 36px;

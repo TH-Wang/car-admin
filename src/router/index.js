@@ -11,9 +11,26 @@ const routes = [
     component: Guide
   },
   {
+    path: '/user',
+    name: 'UserLayout',
+    component: () => import(/* webpackChunkName: "UserLayout" */ '@/layouts/UserLayout')
+  },
+  {
     path: '/admin',
     name: 'BasicLayout',
-    component: () => import(/* webpackChunkName: "BasicLayout" */ '../layouts/BasicLayout')
+    component: () => import(/* webpackChunkName: "BasicLayout" */ '@/layouts/BasicLayout'),
+    children: [
+      {
+        path: '/admin/order/list',
+        name: 'OrderList',
+        component: () => import(/* webpackChunkName: "OrderList" */ '@/views/OrderList')
+      },
+      {
+        path: '/admin/order/create',
+        name: 'OrderCreate',
+        component: () => import(/* webpackChunkName: "OrderCreate" */ '@/views/OrderCreate')
+      }
+    ]
   }
 ]
 

@@ -2,32 +2,19 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
-// import less from 'less'
-import {
-  Container as ElContainer,
-  Header as ElHeader,
-  Aside as ElAside,
-  Main as ElMain
-} from 'element-ui'
-import {
-  Menu as AMenu,
-  Icon as AIcon,
-  Spin as ASpin
-} from 'ant-design-vue'
+import api from './api'
+import elementConfig from './config/element-ui'
+import antdvConfig from './config/ant-design-vue'
+import './global.css'
+import './mock/index'
 
 Vue.config.productionTip = false
-// Vue.use(less)
+Vue.prototype.$api = api
 
 // element-ui
-Vue.use(ElContainer)
-Vue.use(ElHeader)
-Vue.use(ElAside)
-Vue.use(ElMain)
-
+elementConfig(Vue)
 // antd-vue
-Vue.use(AMenu)
-Vue.use(AIcon)
-Vue.use(ASpin)
+antdvConfig(Vue)
 
 new Vue({
   router,

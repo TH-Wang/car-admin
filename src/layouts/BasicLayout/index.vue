@@ -1,17 +1,19 @@
 <template>
   <el-container>
     <el-aside class="aside" :style="{width: asideWidth}">
-      <div class="logo">
-        <a-icon type="car" theme="filled"/>
-        <span v-show="!collapsed">拼车之家</span>
+      <div class="menu" :style="{width: asideWidth}">
+        <div class="logo">
+          <a-icon type="car" theme="filled"/>
+          <span v-show="!collapsed">拼车之家</span>
+        </div>
+        <aside-menu :collapsed="collapsed" />
       </div>
-      <aside-menu :collapsed="collapsed" />
     </el-aside>
     <el-container>
       <el-header class="header">
         <a-icon
           :type="collapsedIcon"
-          :style="{fontSize: '16px'}"
+          :style="{fontSize: '18px'}"
           @click="collapsed = !collapsed"
         />
       </el-header>
@@ -55,9 +57,16 @@ $header-height: 50px;
 }
 .aside{
   transition: width .3s;
-  height: 100vh;
-  background-color: #001529;
   box-shadow:  0 0 10px 0 rgba($color: #000000, $alpha: .1);
+
+  .menu{
+    transition: width .3s;
+    height: 100vh;
+    background-color: #001529;
+    position: fixed;
+    top: 0;
+    left: 0;
+  }
 
   .logo{
     height: $header-height;
