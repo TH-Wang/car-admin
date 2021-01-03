@@ -4,7 +4,8 @@ import tableRender from './table'
 import settingsRender from './settings'
 import paginationRender from './pagination'
 
-export default Vue.component('custom-table', {
+export default Vue.component('table-display', {
+  name: 'table-display',
   model: {
     prop: 'data',
     event: 'update'

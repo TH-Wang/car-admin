@@ -13,6 +13,8 @@ import {
   Table as ElTable,
   TableColumn as ElTableColumn,
   Pagination as ElPagination,
+  Popconfirm as ElPopconfirm,
+  Popover as ElPopover,
   Loading
 } from 'element-ui'
 
@@ -31,5 +33,7 @@ export default function (Vue) {
   Vue.use(ElTable)
   Vue.use(ElTableColumn)
   Vue.use(ElPagination)
+  Vue.use(ElPopconfirm)
+  Vue.use(ElPopover)
   Vue.use(Loading.directive)
 }

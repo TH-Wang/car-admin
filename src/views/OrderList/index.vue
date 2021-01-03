@@ -1,6 +1,6 @@
 <template>
   <div>
-    <data-display
+    <table-display
       :columns="columns"
       v-model="list"
       :query-func="handleRequest">
@@ -14,21 +14,29 @@
       </template>
       <!-- 操作按钮 -->
       <template #handle="{ row }">
-        <el-button type="primary" size="mini" @click="handleUpdate(row.id)">编辑</el-button>
-        <el-button type="danger" size="mini" @click="handleDelete(row.id)">删除</el-button>
+        <a-space>
+          <el-button type="text" size='medium' @click="handleUpdate(row.id)">编辑</el-button>
+          <!-- <el-button type="danger" size="mini" @click="handleDelete(row.id)">删除</el-button> -->
+          <popconfirm-button
+            :button="{type: 'text', size: 'medium'}"
+            title='删除后，该用户信息将会丢失，并无法登录'
+            @confirm="handleDelete(row.id)"
+          >删除</popconfirm-button>
+        </a-space>
       </template>
-    </data-display>
+    </table-display>
   </div>
 </template>
 
 <script>
-import DataDisplay from '@/components/DataDisplay'
+import TableDisplay from '@/components/TableDisplay'
+import PopconfirmButton from '@/components/PopconfirmButton'
 import tableConfig from './tableConfig'
 import moment from 'moment'
 
 export default {
   components: {
-    DataDisplay
+    TableDisplay, PopconfirmButton
   },
   data: () => ({
     columns: tableConfig,
