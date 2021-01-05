@@ -15,6 +15,8 @@ import {
   Pagination as ElPagination,
   Popconfirm as ElPopconfirm,
   Popover as ElPopover,
+  Avatar as ElAvatar,
+  Image as ElImage,
   Loading
 } from 'element-ui'
 
@@ -35,5 +37,7 @@ export default function (Vue) {
   Vue.use(ElPagination)
   Vue.use(ElPopconfirm)
   Vue.use(ElPopover)
+  Vue.use(ElAvatar)
+  Vue.use(ElImage)
   Vue.use(Loading.directive)
 }

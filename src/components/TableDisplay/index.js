@@ -24,9 +24,9 @@ export default Vue.component('table-display', {
     total: 0,
     loading: false,
     size: 'medium',
-    stripe: true,
-    border: true,
-    tableSize: [['mini', '小'], ['small', '正常'], ['medium', '大']]
+    stripe: false,
+    border: false,
+    tableSize: [['mini', '小'], ['small', '中等'], ['medium', '大']]
   }),
   mounted () {
     this.handleDatas()
@@ -34,13 +34,19 @@ export default Vue.component('table-display', {
   methods: {
     // 处理请求
     async handleDatas () {
-      this.loading = true
-      const { pageNum, pageSize } = this
-      const { data, total } = await this.queryFunc(pageNum, pageSize)
-      this.$emit('update', data)
-      this.loading = false
-      // 更新页码、数据总量
-      this.total = total
+      try {
+        this.loading = true
+        const { pageNum, pageSize } = this
+        const { data, total } = await this.queryFunc(pageNum, pageSize)
+        this.$emit('update', data)
+        this.loading = false
+        // 更新页码、数据总量
+        this.total = total
+      } catch {
+        this.$message.error('请求失败，请稍后再试')
+      } finally {
+        this.loading = false
+      }
     },
     // 页码发生改变
     handleCurChange (val) {
@@ -51,6 +57,13 @@ export default Vue.component('table-display', {
     handleSizeChange (val) {
       this.pageSize = val
       this.handleDatas()
+    },
+    handleRefresh () {
+      this.pageNum = 1
+      this.loading = true
+      setTimeout(() => {
+        this.handleDatas()
+      }, 800)
     }
   },
   render: function (h) {

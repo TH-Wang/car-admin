@@ -13,9 +13,10 @@
       <el-header class="header">
         <a-icon
           :type="collapsedIcon"
-          :style="{fontSize: '18px'}"
+          :style="{fontSize: '17px'}"
           @click="collapsed = !collapsed"
         />
+        <span style="font-size:16px">管理员</span>
       </el-header>
       <el-main>
         <router-view />
@@ -46,7 +47,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-$header-height: 50px;
+$header-height: 45px;
 
 .header{
   height: $header-height;

@@ -15,11 +15,18 @@ export default function (h) {
         'el-select',
         {
           style: { width: '80px' },
-          props: { value: size, size: settingSize },
-          on: { change: val => { _this_.size = val } }
+          props: { value: size, size: settingSize, align: 'center' },
+          on: {
+            change: val => {
+              _this_.$emit('size-change', val)
+              _this_.size = val
+            }
+          }
         },
         tableSize.map(item => h(
-          'el-option', { props: { label: item[1], value: item[0] } }
+          'el-option', {
+            props: { label: item[1], value: item[0] }
+          }
         ))
       ),
       h( // 斑马纹

@@ -47,16 +47,22 @@ export default {
   methods: {
     // 提交登录
     async handleSubmit () {
+      this.logining = true
       try {
         await this.$refs.form.validate()
-        this.logining = true
-        const res = this.$api.login()
-        setTimeout(() => {
-          this.$message.success(res.msg)
-          this.logining = false
-        }, 2000)
+        const res = await this.$api.login(this.form)
+        const { status, msg, data } = res.data
+        if (status === 200) {
+          this.$store.commit('setUserId', data)
+          this.$message.success(`登录成功: ${data}`)
+          this.$router.push('/admin')
+        } else {
+          this.$message.error(`登录失败，${msg}`)
+        }
       } catch (error) {
         if (error) console.log(error)
+      } finally {
+        this.logining = false
       }
     }
   }
@@ -65,6 +71,7 @@ export default {
 
 <style lang="scss" scoped>
 .container{
+  height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;

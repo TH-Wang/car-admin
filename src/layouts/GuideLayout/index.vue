@@ -6,11 +6,21 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
+
 export default {
+  computed: {
+    ...mapState(['auth'])
+  },
   mounted () {
     setTimeout(() => {
-      this.$router.replace('/admin')
-    }, 2000)
+      if (this.auth.userId) {
+        this.$router.push('/admin')
+      } else {
+        this.$message.info('请重新登录')
+        this.$router.push('/user')
+      }
+    }, 1000)
   }
 }
 </script>

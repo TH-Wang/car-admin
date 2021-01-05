@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import store from '@/store'
 import Guide from '@/layouts/GuideLayout'
 
 Vue.use(VueRouter)
@@ -18,17 +19,18 @@ const routes = [
   {
     path: '/admin',
     name: 'BasicLayout',
+    redirect: '/admin/user',
     component: () => import(/* webpackChunkName: "BasicLayout" */ '@/layouts/BasicLayout'),
     children: [
-      {
-        path: '/admin/order/list',
-        name: 'OrderList',
-        component: () => import(/* webpackChunkName: "OrderList" */ '@/views/OrderList')
+      { // 用户列表
+        path: '/admin/user',
+        name: 'UserList',
+        component: () => import(/* webpackChunkName: "UserList" */ '@/views/UserList')
       },
       {
-        path: '/admin/order/create',
-        name: 'OrderCreate',
-        component: () => import(/* webpackChunkName: "OrderCreate" */ '@/views/OrderCreate')
+        path: '/admin/order',
+        name: 'OrderList',
+        component: () => import(/* webpackChunkName: "OrderList" */ '@/views/OrderList')
       }
     ]
   }
@@ -38,6 +40,14 @@ const router = new VueRouter({
   mode: 'hash',
   base: process.env.BASE_URL,
   routes
+})
+
+router.beforeEach((to, from, next) => {
+  if (/^\/admin/.test(to.path) && !store.state.auth.userId) {
+    next('/')
+    return
+  }
+  next()
 })
 
 export default router

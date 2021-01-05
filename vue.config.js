@@ -9,6 +9,9 @@ module.exports = {
         path.resolve(__dirname, 'src/assets/scss/vars.scss')
       ]
     }
+  },
+  css: {
+    sourceMap: true
   }
   // configureWebpack: {
   //   plugins: [

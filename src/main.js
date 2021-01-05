@@ -6,7 +6,7 @@ import api from './api'
 import elementConfig from './config/element-ui'
 import antdvConfig from './config/ant-design-vue'
 import './global.css'
-import './mock/index'
+// import './mock/index'
 
 Vue.config.productionTip = false
 Vue.prototype.$api = api

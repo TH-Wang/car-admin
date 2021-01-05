@@ -1,8 +1,8 @@
 <template>
   <div class="container">
     <a-menu
-      :default-selected-keys="['2-2']"
-      :default-open-keys="['2']"
+      :default-selected-keys="['1']"
+      :default-open-keys="['1']"
       mode="inline"
       theme="dark"
       :inline-collapsed="collapsed"
