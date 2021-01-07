@@ -14,5 +14,11 @@ export default [
     //   { key: '2-1', title: '发布订单', path: '/admin/order/create' },
     //   { key: '2-2', title: '查看订单', path: '/admin/order/list' }
     // ]
+  },
+  {
+    key: '3',
+    title: '路线管理',
+    icon: 'rise',
+    path: '/admin/line'
   }
 ]

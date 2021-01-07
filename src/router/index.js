@@ -27,10 +27,15 @@ const routes = [
         name: 'UserList',
         component: () => import(/* webpackChunkName: "UserList" */ '@/views/UserList')
       },
-      {
-        path: '/admin/order',
-        name: 'OrderList',
-        component: () => import(/* webpackChunkName: "OrderList" */ '@/views/OrderList')
+      // { // 订单列表
+      //   path: '/admin/order',
+      //   name: 'OrderList',
+      //   component: () => import(/* webpackChunkName: "OrderList" */ '@/views/OrderList')
+      // },
+      { // 路线列表
+        path: '/admin/line',
+        name: 'LineList',
+        component: () => import(/* webpackChunkName: "LineList" */ '@/views/LineList')
       }
     ]
   }
