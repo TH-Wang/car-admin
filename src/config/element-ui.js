@@ -1,5 +1,6 @@
 import {
   Button as ElButton,
+  ButtonGroup as ElButtonGroup,
   Container as ElContainer,
   Header as ElHeader,
   Aside as ElAside,
@@ -10,6 +11,8 @@ import {
   Select as ElSelect,
   Option as ElOption,
   Checkbox as ElCheckbox,
+  Upload as ElUpload,
+  DatePicker as ElDatePicker,
   Table as ElTable,
   TableColumn as ElTableColumn,
   Pagination as ElPagination,
@@ -17,11 +20,13 @@ import {
   Popover as ElPopover,
   Avatar as ElAvatar,
   Image as ElImage,
+  Dialog as ElDialog,
   Loading
 } from 'element-ui'
 
 export default function (Vue) {
   Vue.use(ElButton)
+  Vue.use(ElButtonGroup)
   Vue.use(ElContainer)
   Vue.use(ElHeader)
   Vue.use(ElAside)
@@ -31,7 +36,9 @@ export default function (Vue) {
   Vue.use(ElInput)
   Vue.use(ElSelect)
   Vue.use(ElOption)
+  Vue.use(ElUpload)
   Vue.use(ElCheckbox)
+  Vue.use(ElDatePicker)
   Vue.use(ElTable)
   Vue.use(ElTableColumn)
   Vue.use(ElPagination)
@@ -39,5 +46,6 @@ export default function (Vue) {
   Vue.use(ElPopover)
   Vue.use(ElAvatar)
   Vue.use(ElImage)
+  Vue.use(ElDialog)
   Vue.use(Loading.directive)
 }

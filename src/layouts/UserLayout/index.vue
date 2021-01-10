@@ -51,13 +51,13 @@ export default {
       try {
         await this.$refs.form.validate()
         const res = await this.$api.login(this.form)
-        const { status, msg, data } = res.data
+        const { status, data } = res.data
         if (status === 200) {
           this.$store.commit('setUserId', data)
-          this.$message.success(`登录成功: ${data}`)
+          this.$message.success('登录成功')
           this.$router.push('/admin')
         } else {
-          this.$message.error(`登录失败，${msg}`)
+          this.$message.error('登录失败')
         }
       } catch (error) {
         if (error) console.log(error)

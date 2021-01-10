@@ -3,14 +3,14 @@
 import styles from './index.module.css'
 
 export default function (h) {
-  const { pageNum, pageSize, total, handleCurChange, handleSizeChange } = this
+  const { pageNum, pageCount, total, handleCurChange, handleSizeChange } = this
   return h(
     'el-pagination',
     {
       class: styles.pagination,
       props: {
         currentPage: pageNum,
-        pageSize: pageSize,
+        pageCount: pageCount,
         total: total,
         layout: 'total, sizes, prev, pager, next, jumper'
       },

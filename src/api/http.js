@@ -1,4 +1,6 @@
 import axios from 'axios'
+import store from '@/store'
+import router from '@/router'
 
 // 不需要传token的请求
 const safeUrl = [
@@ -24,6 +26,16 @@ axios.interceptors.request.use((config) => {
     config.headers.token = localStorage.getItem('token')
   }
   return config
+})
+
+// 响应拦截器
+axios.interceptors.response.use((res) => {
+  if (res.data.status === -4) {
+    store.commit('clearUserId')
+    router.push('/')
+    return
+  }
+  return res
 })
 
 export default axios

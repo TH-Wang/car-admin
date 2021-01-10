@@ -3,7 +3,7 @@
 
 export default function (h) {
   const _this_ = this
-  const { pageNum, pageSize, data, size, stripe, border, columns } = this
+  const { pageNum, pageCount, data, size, stripe, border, columns } = this
   return h(
     'el-table',
     {
@@ -15,7 +15,7 @@ export default function (h) {
             h('el-button',
               {
                 props: { type: 'text' },
-                on: { click: () => { this.handleRefresh() } }
+                on: { click: () => { this.refresh() } }
               },
               '重新加载'
             )
@@ -27,7 +27,7 @@ export default function (h) {
     },
     columns.map(item => {
       if (item.type === 'index') {
-        item.index = (idx) => ((pageNum - 1) * pageSize) + idx + 1
+        item.index = (idx) => ((pageNum - 1) * pageCount) + idx + 1
       }
       return h(
         'el-table-column',

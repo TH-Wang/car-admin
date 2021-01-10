@@ -2,6 +2,7 @@
   <div>
     <!-- 表格主体 -->
     <table-display
+      ref="table"
       :columns="columns"
       v-model="list"
       :query-func="handleRequest"
@@ -38,6 +39,15 @@
         >修改</el-button>
       </template>
     </table-display>
+    <!-- 表单弹窗 -->
+    <dialog-form
+      ref="form"
+      mode="update"
+      :visible="visible"
+      :loading="loading"
+      @close="visible = false"
+      @submit="handleConfirm"
+    />
     <!-- 预览头像 -->
     <a-modal
       v-model="previewAvatar.visible"
@@ -53,14 +63,15 @@
 </template>
 
 <script>
-import TableDisplay from '@/components/TableDisplay'
+import { cloneDeep } from 'lodash'
 import tableConfig from './tableConfig'
+import DialogForm from './DialogForm'
 
 export default {
-  components: {
-    TableDisplay
-  },
+  components: { DialogForm },
   data: () => ({
+    loading: false,
+    visible: false,
     tableSize: 'medium',
     columns: tableConfig,
     list: [],
@@ -84,7 +95,35 @@ export default {
       return { data: list, total }
     },
     handleUpdate (id) {
-      this.$message.info(`id为${id}的用户将被编辑`)
+      this.visible = true
+      this.$nextTick(() => {
+        this.$refs.form.setFields(cloneDeep(this.list.find(i => i.id === id)))
+      })
+    },
+    // 点击确认按钮
+    async handleConfirm (data) {
+      this.loading = true
+      try {
+        await this.$api.updateUser(this.handleData(data))
+        this.$message.success('操作成功')
+        this.$refs.table.refresh()
+      } catch (error) {
+        console.log(error)
+        this.$message.error('操作失败，请稍后再试')
+      } finally {
+        this.loading = false
+        this.visible = false
+      }
+    },
+    // 处理提交数据
+    handleData (data) {
+      const result = cloneDeep(data)
+      for (const key in result) {
+        if (!result[key]) delete result[key]
+        if (key === 'totalPrice') result[key] = parseInt(result[key])
+        if (key === 'faithfulValue') result[key] = parseInt(result[key])
+      }
+      return result
     },
     // 判断是否没有任何认证信息
     unAuth (row) {

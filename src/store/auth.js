@@ -9,6 +9,10 @@ export default {
     setUserId (state, id) {
       state.userId = id
       localStorage.setItem('user', id)
+    },
+    clearUserId (state) {
+      state.userId = null
+      localStorage.removeItem('user')
     }
   }
 }

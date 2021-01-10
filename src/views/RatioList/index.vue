@@ -1,26 +1,23 @@
-<template>
+e<template>
   <div>
+    <!-- 表格 -->
     <table-display
       ref="table"
       :columns="columns"
       v-model="list"
       :query-func="handleRequest"
+      style="width:1000px"
     >
-      <template #type="{ row }">
-        <a-tag v-if="row.publishType === 1">短途拼车</a-tag>
-        <a-tag v-else :color="publishConfig[row.publishType][1]">
-          {{publishConfig[row.publishType][0]}}
-        </a-tag>
-      </template>
+      <!-- 操作按钮 -->
       <template #handle="{row}">
-        <el-button type="text" @click="handleUpdate(row.id)">编辑</el-button>
+        <el-button type="primary" size="mini" @click="handleUpdate(row.id)">修改</el-button>
       </template>
     </table-display>
     <!-- 表单弹窗 -->
     <dialog-form
       ref="form"
-      mode="update"
       :visible="visible"
+      mode="update"
       :loading="loading"
       @close="visible = false"
       @submit="handleConfirm"
@@ -40,22 +37,16 @@ export default {
     visible: false,
     columns: tableConfig,
     list: [],
-    publishConfig: {
-      1: ['短途拼车', 'yellow'],
-      2: ['城际拼车', 'orange'],
-      3: ['跨省拼车', 'red'],
-      4: ['上下班拼车', 'green'],
-      5: ['顺路带物', 'blue']
-    }
+    form: {}
   }),
   methods: {
-    // 数据请求函数
+    // 请求列表
     async handleRequest (num, size) {
-      const res = await this.$api.getLineList({ pageNo: num, pageSize: size })
-      const { list, total } = res.data.data
-      return { data: list, total }
+      const res = await this.$api.getRatioList()
+      const data = res.data.data
+      return { data, total: data.length }
     },
-    // 修改数据
+    // 修改
     handleUpdate (id) {
       this.visible = true
       this.$nextTick(() => {
@@ -66,9 +57,13 @@ export default {
     async handleConfirm (data) {
       this.loading = true
       try {
-        await this.$api.updateLine(data)
-        this.$message.success('操作成功')
-        this.$refs.table.refresh()
+        const res = await this.$api.updateRatio(data)
+        if (res.data.status === 200) {
+          this.$message.success('操作成功')
+          this.$refs.table.refresh()
+        } else {
+          this.$message.error(`${res.data.msg}，请稍后再试`)
+        }
       } catch (error) {
         console.log(error)
         this.$message.error('操作失败，请稍后再试')
@@ -80,7 +75,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss" scoped>
-
-</style>

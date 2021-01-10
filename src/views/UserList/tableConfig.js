@@ -33,7 +33,7 @@ const config = [
     label: '信用分'
   },
   {
-    label: '认证信息',
+    label: '认证',
     scopedSlot: 'auth',
     width: 220
   },

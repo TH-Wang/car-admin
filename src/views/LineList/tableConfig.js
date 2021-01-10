@@ -3,14 +3,14 @@ export default [
     label: '序列',
     type: 'index',
     align: 'center',
-    width: 60
+    width: 120
   },
   {
-    prop: 'startAddr',
+    prop: 'startAddrAll',
     label: '出发地点'
   },
   {
-    prop: 'endAddr',
+    prop: 'endAddrAll',
     label: '目的地'
   },
   {

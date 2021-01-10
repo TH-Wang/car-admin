@@ -1,0 +1,37 @@
+.el-checkbox.is-bordered{
+  line-height: 16px;
+}
+.el-avatar>img{
+  width: 100%;
+}
+
+// 表格详情
+.table-expand div {
+  margin-bottom: 10px;
+
+  span{
+    color: #99a9bf;
+    font-weight: bold;
+    width: 80px;
+    display: inline-block;
+  }
+
+  strong {
+    width: 50%;
+    color: #000;
+  }
+
+  img{
+    max-width: 300px;
+    vertical-align: top;
+  }
+}
+
+// 表单弹窗
+.dialog-form{
+  width: 100%;
+  padding-right: 50px;
+  box-sizing: border-box;
+  max-height: calc(60vh - 100px);
+  overflow-y: auto;
+}

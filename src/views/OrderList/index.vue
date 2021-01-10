@@ -1,5 +1,5 @@
 <template>
-  <div></div>
+  <div>订单列表</div>
 </template>
 
 <script>
@@ -8,6 +8,6 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss" scoped>
 
 </style>

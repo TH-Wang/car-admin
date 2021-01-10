@@ -1,10 +1,9 @@
-import Vue from 'vue'
 import styles from './index.module.css'
 import tableRender from './table'
 import settingsRender from './settings'
 import paginationRender from './pagination'
 
-export default Vue.component('table-display', {
+const root = {
   name: 'table-display',
   model: {
     prop: 'data',
@@ -16,11 +15,15 @@ export default Vue.component('table-display', {
     // 表格配置项
     columns: { type: Array, default: () => ([]) },
     // 请求数据的方法
-    queryFunc: { type: Function, default: () => ({ data: [], total: 0 }) }
+    queryFunc: { type: Function, default: () => ({ data: [], total: 0 }) },
+    // 是否展示底部
+    footer: { type: Boolean, default: true },
+    // 默认每页数据量
+    pageSize: { type: Number, default: 10 }
   },
   data: () => ({
     pageNum: 1,
-    pageSize: 10,
+    pageCount: 10,
     total: 0,
     loading: false,
     size: 'medium',
@@ -36,13 +39,14 @@ export default Vue.component('table-display', {
     async handleDatas () {
       try {
         this.loading = true
-        const { pageNum, pageSize } = this
-        const { data, total } = await this.queryFunc(pageNum, pageSize)
+        const { pageNum, pageCount } = this
+        const { data, total } = await this.queryFunc(pageNum, pageCount)
         this.$emit('update', data)
         this.loading = false
         // 更新页码、数据总量
         this.total = total
-      } catch {
+      } catch (err) {
+        console.log(err)
         this.$message.error('请求失败，请稍后再试')
       } finally {
         this.loading = false
@@ -55,15 +59,15 @@ export default Vue.component('table-display', {
     },
     // 每页数量发生改变
     handleSizeChange (val) {
-      this.pageSize = val
+      this.pageCount = val
       this.handleDatas()
     },
-    handleRefresh () {
+    refresh () {
       this.pageNum = 1
       this.loading = true
       setTimeout(() => {
         this.handleDatas()
-      }, 800)
+      }, 300)
     }
   },
   render: function (h) {
@@ -74,10 +78,16 @@ export default Vue.component('table-display', {
     // 表格样式设置
     const settings = settingsRender.call(this, h)
     // 底部
-    const footer = h(
-      'div', { class: styles.footer }, [settings, pagination]
-    )
+    const footer = this.footer
+      ? h('div', { class: styles.footer }, [settings, pagination])
+      : ''
     // 整体dom
     return h('div', [table, footer])
   }
-})
+}
+
+export default {
+  install: function (Vue) {
+    Vue.component('table-display', root)
+  }
+}

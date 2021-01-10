@@ -27,15 +27,55 @@ const routes = [
         name: 'UserList',
         component: () => import(/* webpackChunkName: "UserList" */ '@/views/UserList')
       },
-      // { // 订单列表
-      //   path: '/admin/order',
-      //   name: 'OrderList',
-      //   component: () => import(/* webpackChunkName: "OrderList" */ '@/views/OrderList')
-      // },
+      { // 订单列表
+        path: '/admin/order',
+        name: 'OrderList',
+        component: () => import(/* webpackChunkName: "OrderList" */ '@/views/OrderList')
+      },
       { // 路线列表
         path: '/admin/line',
         name: 'LineList',
         component: () => import(/* webpackChunkName: "LineList" */ '@/views/LineList')
+      },
+      { // 旅游列表
+        path: '/admin/tour',
+        name: 'TourList',
+        component: () => import(/* webpackChunkName: "TourList" */ '@/views/TourList')
+      },
+      { // 旅游分类列表
+        path: '/admin/tour/type',
+        name: 'TourType',
+        component: () => import(/* webpackChunkName: "TourType" */ '@/views/TourType')
+      },
+      { // 包车列表
+        path: '/admin/bus',
+        name: 'BusList',
+        component: () => import(/* webpackChunkName: "BusList" */ '@/views/BusList')
+      },
+      { // 包车分类列表
+        path: '/admin/bus/type',
+        name: 'BusType',
+        component: () => import(/* webpackChunkName: "BusType" */ '@/views/BusType')
+      },
+      { // 拼车群审核列表
+        path: '/admin/check/group',
+        name: 'GroupList',
+        component: () => import(/* webpackChunkName: "GroupList" */ '@/views/GroupList')
+      },
+      { // 站长审核列表
+        path: '/admin/check/station',
+        name: 'StationList',
+        component: () => import(/* webpackChunkName: "StationList" */ '@/views/StationList')
+      },
+      { // 诚信值规则列表
+        path: '/admin/faithful',
+        name: 'FaithfulList',
+        component: () => import(/* webpackChunkName: "FaithfulList" */ '@/views/FaithfulList')
+      },
+      { // 收益比例规则列表
+        path: '/admin/ratio',
+        name: 'RatioList',
+        component: () => import(/* webpackChunkName: "RatioList" */ '@/views/RatioList')
       }
     ]
   }

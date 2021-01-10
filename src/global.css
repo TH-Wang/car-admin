@@ -1,6 +1,36 @@
-.el-checkbox.is-bordered{
+.el-checkbox.is-bordered {
   line-height: 16px;
 }
-.el-avatar>img{
+
+.el-avatar > img {
   width: 100%;
+}
+
+.table-expand div {
+  margin-bottom: 10px;
+}
+
+.table-expand div span {
+  color: #99a9bf;
+  font-weight: bold;
+  width: 80px;
+  display: inline-block;
+}
+
+.table-expand div strong {
+  width: 50%;
+  color: #000;
+}
+
+.table-expand div img {
+  max-width: 300px;
+  vertical-align: top;
+}
+
+.dialog-form {
+  width: 100%;
+  padding-right: 50px;
+  box-sizing: border-box;
+  max-height: calc(60vh - 100px);
+  overflow-y: auto;
 }

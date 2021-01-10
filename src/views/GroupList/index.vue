@@ -1,0 +1,60 @@
+<template>
+  <table-display
+    ref="table"
+    :columns="columns"
+    v-model="list"
+    :query-func="handleRequest"
+  >
+    <!-- 详情 -->
+    <template #expand="{row}">
+      <div class="table-expand">
+        <div><span class="label">关键字：</span>{{row.keyword}}</div>
+        <div><span class="label">群说明：</span>{{row.groupExplain}}</div>
+        <div><span class="label">群介绍：</span>{{row.groupIntroduce}}</div>
+        <div><span class="label">入群要求：</span>{{row.groupRequire}}</div>
+      </div>
+    </template>
+    <!-- 封面 -->
+    <template #avatar="{row}">
+      <el-image :src="row.imgUrl" style="width:100px" />
+    </template>
+    <!-- 审核状态 -->
+    <template #handle="{row}">
+      <el-button v-if="row.status === 2" type="text">已审核通过</el-button>
+      <span v-else-if="row.status === 3" style="color:#999">未通过</span>
+      <el-button-group v-else>
+        <el-button size="small" type="primary" @click="handleCheck(row.id, 2)">通过</el-button>
+        <el-button size="small" type="danger" @click="handleCheck(row.id, 3)">未通过</el-button>
+      </el-button-group>
+    </template>
+  </table-display>
+</template>
+
+<script>
+import tableConfig from './tableConfig'
+
+export default {
+  data: () => ({
+    columns: tableConfig,
+    list: []
+  }),
+  methods: {
+    // 请求列表
+    async handleRequest (num, size) {
+      const res = await this.$api.getGroupList({ pageNo: num, pageSize: size })
+      const { list, total } = res.data.data
+      return { data: list, total }
+    },
+    // 审核通过
+    async handleCheck (id, state) {
+      try {
+        await this.$api.auditCheck({ id, type: 2, state })
+        this.$message.success('操作成功')
+        this.$refs.table.refresh()
+      } catch (error) {
+        this.$message.error('操作失败，请稍后再试')
+      }
+    }
+  }
+}
+</script>
