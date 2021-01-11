@@ -10,24 +10,12 @@ export default [
     scopedSlot: 'cover'
   },
   {
-    prop: 'details',
+    label: '类别',
+    scopedSlot: 'type'
+  },
+  {
+    prop: 'title',
     label: '名称'
-  },
-  {
-    prop: 'creationTime',
-    label: '添加时间',
-    align: 'center',
-    formatter: (row, column, value, index) => moment(value).format('YYYY年MM月DD日')
-  },
-  {
-    prop: 'destination',
-    label: '目的地',
-    align: 'center'
-  },
-  {
-    label: '往返时间',
-    scopedSlot: 'time',
-    align: 'center'
   },
   {
     prop: 'price',
@@ -39,6 +27,12 @@ export default [
     prop: 'salesVolume',
     label: '销售量',
     align: 'center'
+  },
+  {
+    prop: 'creationTime',
+    label: '添加时间',
+    align: 'center',
+    formatter: (row, column, value, index) => moment(value).format('YYYY年MM月DD日')
   },
   {
     label: '操作',

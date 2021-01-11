@@ -10,10 +10,10 @@
   margin-bottom: 10px;
 }
 
-.table-expand div span {
+.table-expand div .label {
   color: #99a9bf;
   font-weight: bold;
-  width: 80px;
+  width: 100px;
   display: inline-block;
 }
 

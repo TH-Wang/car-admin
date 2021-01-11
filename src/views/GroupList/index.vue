@@ -20,11 +20,11 @@
     </template>
     <!-- 审核状态 -->
     <template #handle="{row}">
-      <el-button v-if="row.status === 2" type="text">已审核通过</el-button>
+      <span v-if="row.status === 2" style="color:#409EFF">已审核通过</span>
       <span v-else-if="row.status === 3" style="color:#999">未通过</span>
       <el-button-group v-else>
-        <el-button size="small" type="primary" @click="handleCheck(row.id, 2)">通过</el-button>
-        <el-button size="small" type="danger" @click="handleCheck(row.id, 3)">未通过</el-button>
+        <el-button size="mini" type="primary" @click="handleCheck(row.id, 2)">通过</el-button>
+        <el-button size="mini" type="danger" @click="handleCheck(row.id, 3)">未通过</el-button>
       </el-button-group>
     </template>
   </table-display>

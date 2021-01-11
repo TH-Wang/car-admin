@@ -6,6 +6,7 @@ import busApi from './bus'
 import checkApi from './check'
 import faithfulApi from './faithful'
 import ratioApi from './ratio'
+import orderApi from './order'
 
 export default {
   ...authApi,
@@ -15,5 +16,6 @@ export default {
   ...busApi,
   ...checkApi,
   ...faithfulApi,
-  ...ratioApi
+  ...ratioApi,
+  ...orderApi
 }

@@ -14,5 +14,10 @@ export default [
   {
     label: '级别',
     scopedSlot: 'level'
+  },
+  {
+    label: '审核状态',
+    scopedSlot: 'handle',
+    align: 'center'
   }
 ]

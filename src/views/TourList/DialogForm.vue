@@ -15,7 +15,7 @@
       </el-form-item>
 
       <el-form-item label="类别">
-        <el-select v-model="form.carTypeId">
+        <el-select v-model="form.tourNameId">
           <el-option
             v-for="item in typeList"
             :key="item.value"
@@ -106,21 +106,19 @@ export default {
     loading: {
       type: Boolean,
       default: false
+    },
+    typeList: {
+      type: Array,
+      default: () => ([])
     }
   },
   data: () => ({
     form: {},
     img: '',
     detailsImg: '',
-    typeList: [],
     uploadUrl: file
   }),
   methods: {
-    // 请求类别
-    async handleReqType () {
-      const res = await this.$api.getTourTypeList()
-      this.typeList = res.data.data.map(item => ({ value: item.id, label: item.name }))
-    },
     // 上传图片发送改变
     handleFileSuccess (res) {
       console.log(res)
@@ -146,9 +144,6 @@ export default {
     handleConfirm () {
       this.$emit('submit', this.form)
     }
-  },
-  created () {
-    this.handleReqType()
   }
 }
 </script>

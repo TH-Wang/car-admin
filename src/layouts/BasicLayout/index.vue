@@ -67,6 +67,13 @@ $header-height: 45px;
     position: fixed;
     top: 0;
     left: 0;
+    overflow-y: auto;
+    scrollbar-width: none; /* firefox */
+    -ms-overflow-style: none; /* IE 10+ */
+
+    &::-webkit-scrollbar{
+      display: none;
+    }
   }
 
   .logo{

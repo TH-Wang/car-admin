@@ -2,6 +2,7 @@ const path = require('path')
 // const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 
 module.exports = {
+  publicPath: '/web/',
   pluginOptions: {
     'style-resources-loader': {
       preProcessor: 'scss',

@@ -30,7 +30,7 @@ axios.interceptors.request.use((config) => {
 
 // 响应拦截器
 axios.interceptors.response.use((res) => {
-  if (res.data.status === -4) {
+  if (res.data.status === -4 && /token失效/.test(res.data.msg)) {
     store.commit('clearUserId')
     router.push('/')
     return

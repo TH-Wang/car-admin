@@ -27,11 +27,11 @@ const routes = [
         name: 'UserList',
         component: () => import(/* webpackChunkName: "UserList" */ '@/views/UserList')
       },
-      { // 订单列表
-        path: '/admin/order',
-        name: 'OrderList',
-        component: () => import(/* webpackChunkName: "OrderList" */ '@/views/OrderList')
-      },
+      // { // 订单列表
+      //   path: '/admin/order',
+      //   name: 'OrderList',
+      //   component: () => import(/* webpackChunkName: "OrderList" */ '@/views/OrderList')
+      // },
       { // 路线列表
         path: '/admin/line',
         name: 'LineList',
@@ -47,6 +47,11 @@ const routes = [
         name: 'TourType',
         component: () => import(/* webpackChunkName: "TourType" */ '@/views/TourType')
       },
+      { // 旅游订单列表
+        path: '/admin/tour/order',
+        name: 'TourOrderList',
+        component: () => import(/* webpackChunkName: "TourOrderList" */ '@/views/TourOrderList')
+      },
       { // 包车列表
         path: '/admin/bus',
         name: 'BusList',
@@ -56,6 +61,11 @@ const routes = [
         path: '/admin/bus/type',
         name: 'BusType',
         component: () => import(/* webpackChunkName: "BusType" */ '@/views/BusType')
+      },
+      { // 包车订单列表
+        path: '/admin/bus/order',
+        name: 'BusOrderList',
+        component: () => import(/* webpackChunkName: "BusOrderList" */ '@/views/BusOrderList')
       },
       { // 拼车群审核列表
         path: '/admin/check/group',

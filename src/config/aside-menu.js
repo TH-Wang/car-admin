@@ -11,19 +11,20 @@ export default [
     icon: 'rise',
     path: '/admin/line'
   },
-  {
-    key: '3',
-    title: '订单管理',
-    icon: 'snippets',
-    path: '/admin/order'
-  },
+  // {
+  //   key: '3',
+  //   title: '订单管理',
+  //   icon: 'snippets',
+  //   path: '/admin/order'
+  // },
   {
     key: '4',
     title: '旅游管理',
     icon: 'camera',
     children: [
       { key: '4-1', title: '旅游类别', path: '/admin/tour/type' },
-      { key: '4-2', title: '旅游列表', path: '/admin/tour' }
+      { key: '4-2', title: '旅游列表', path: '/admin/tour' },
+      { key: '4-3', title: '旅游订单', path: '/admin/tour/order' }
     ]
   },
   {
@@ -32,7 +33,8 @@ export default [
     icon: 'car',
     children: [
       { key: '5-1', title: '包车类别', path: '/admin/bus/type' },
-      { key: '5-2', title: '包车列表', path: '/admin/bus' }
+      { key: '5-2', title: '包车列表', path: '/admin/bus' },
+      { key: '5-3', title: '包车订单', path: '/admin/bus/order' }
     ]
   },
   {

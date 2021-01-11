@@ -13,18 +13,27 @@
       <!-- 详情 -->
       <template #expand="{row}">
         <div class="table-expand">
-          <div><span>详细说明：</span><strong>{{row.title}}</strong></div>
-          <div><span>详情图片：</span><img :src="row.detailsImg" /></div>
+          <div><span class="label">目的地：</span>{{row.destination}}</div>
+          <div>
+            <span class="label">往返时间：</span>
+            {{getTime(row.startTime) + ' - ' + getTime(row.endTime)}}
+          </div>
+          <div><span class="label">详细说明：</span>{{row.details}}</div>
+          <div><span class="label">详情图片：</span><img :src="row.detailsImg" /></div>
         </div>
       </template>
       <!-- 封面 -->
       <template #cover="{row}">
         <el-image :src="row.img" style="width:100px" />
       </template>
-      <!-- 往返时间 -->
-      <template #time="{row}">
-        {{getTime(row.startTime) + ' - ' + getTime(row.endTime)}}
+      <!-- 类别 -->
+      <template #type="{row}">
+        <span>{{typeDict[row.tourNameId]}}</span>
       </template>
+      <!-- 往返时间 -->
+      <!-- <template #time="{row}">
+        {{getTime(row.startTime) + ' - ' + getTime(row.endTime)}}
+      </template> -->
       <!-- 操作按钮 -->
       <template #handle="{row}">
         <a-space>
@@ -43,6 +52,7 @@
       :visible="visible"
       :mode="dialogMode"
       :loading="loading"
+      :type-list="typeList"
       @close="visible = false"
       @submit="handleConfirm"
     />
@@ -64,9 +74,23 @@ export default {
     visible: false,
     form: {},
     columns: tableConfig,
-    list: []
+    list: [],
+    typeList: [],
+    typeDict: {}
   }),
   methods: {
+    // 请求类别
+    async handleReqType () {
+      const res = await this.$api.getTourTypeList()
+      this.typeList = res.data.data.map(item => ({ value: item.id, label: item.name }))
+      const dict = {}
+      this.typeList.forEach(item => {
+        dict[item.value] = item.label
+      })
+      this.typeDict = dict
+      console.log(dict)
+    },
+    // 请求列表
     async handleRequest (num, size) {
       const res = await this.$api.getTourList({ pageNo: num, pageSize: size })
       const { list, total } = res.data.data
@@ -74,9 +98,7 @@ export default {
     },
     // 格式化时间
     getTime (time) {
-      const m = time.toString().slice(0, 2)
-      const d = time.toString().slice(2)
-      return m + '/' + d
+      return moment(time).format('MM月DD日')
     },
     // 点击确认按钮
     async handleConfirm (data) {
@@ -116,7 +138,10 @@ export default {
       this.dialogMode = 'update'
       this.visible = true
       this.$nextTick(() => {
-        this.$refs.form.setFields(cloneDeep(this.list.find(i => i.id === id)))
+        const data = cloneDeep(this.list.find(i => i.id === id))
+        data.startTime = new Date(data.startTime)
+        data.endTime = new Date(data.endTime)
+        this.$refs.form.setFields(data)
       })
     },
     // 删除
@@ -129,10 +154,9 @@ export default {
         this.$message.error('删除失败，请稍后再试')
       }
     }
+  },
+  created () {
+    this.handleReqType()
   }
 }
 </script>
-
-<style lang="scss" scoped>
-
-</style>
