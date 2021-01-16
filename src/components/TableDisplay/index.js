@@ -62,12 +62,17 @@ const root = {
       this.pageCount = val
       this.handleDatas()
     },
+    // 刷新
     refresh () {
       this.pageNum = 1
       this.loading = true
       setTimeout(() => {
         this.handleDatas()
       }, 300)
+    },
+    // 更新数据，不改变页码
+    update () {
+      this.handleDatas()
     }
   },
   render: function (h) {

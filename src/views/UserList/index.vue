@@ -32,21 +32,33 @@
       </template>
       <!-- 操作按钮 -->
       <template #handle="{ row }">
-        <el-button
-          type="text"
-          :size="tableSize"
-          @click="handleUpdate(row.id)"
-        >修改</el-button>
+        <a-space size="middle">
+          <el-button
+            type="text"
+            :size="tableSize"
+            @click="handleUpdate(row.id)"
+          >修改</el-button>
+          <dropdown-button
+            :menus="handleMenus"
+            @add-integer="handleOpenDialog('addInteger', row.id)"
+          >更多</dropdown-button>
+        </a-space>
       </template>
     </table-display>
-    <!-- 表单弹窗 -->
+    <!-- 修改表单弹窗 -->
     <dialog-form
       ref="form"
       mode="update"
-      :visible="visible"
+      :visible="visible.update"
       :loading="loading"
-      @close="visible = false"
+      @close="visible.update = false"
       @submit="handleConfirm"
+    />
+    <!-- 添加积分弹窗 -->
+    <add-integer
+      :visible="visible.addInteger"
+      @close="visible.addInteger = false"
+      @confirm="handleAddInteger"
     />
     <!-- 预览头像 -->
     <a-modal
@@ -66,12 +78,12 @@
 import { cloneDeep } from 'lodash'
 import tableConfig from './tableConfig'
 import DialogForm from './DialogForm'
+import AddInteger from './AddInteger'
 
 export default {
-  components: { DialogForm },
+  components: { DialogForm, AddInteger },
   data: () => ({
     loading: false,
-    visible: false,
     tableSize: 'medium',
     columns: tableConfig,
     list: [],
@@ -79,7 +91,15 @@ export default {
       visible: false,
       username: '',
       url: null
-    }
+    },
+    handleMenus: [
+      { command: 'add-integer', text: '赠送积分' }
+    ],
+    visible: {
+      update: false,
+      addInteger: false
+    },
+    handleUserId: null
   }),
   computed: {
     avatarSize () {
@@ -94,13 +114,14 @@ export default {
       const { list, total } = res.data.data
       return { data: list, total }
     },
+    // 打开修改表单
     handleUpdate (id) {
-      this.visible = true
+      this.visible.update = true
       this.$nextTick(() => {
         this.$refs.form.setFields(cloneDeep(this.list.find(i => i.id === id)))
       })
     },
-    // 点击确认按钮
+    // 提交用户修改
     async handleConfirm (data) {
       this.loading = true
       try {
@@ -112,7 +133,7 @@ export default {
         this.$message.error('操作失败，请稍后再试')
       } finally {
         this.loading = false
-        this.visible = false
+        this.visible.update = false
       }
     },
     // 处理提交数据
@@ -124,6 +145,17 @@ export default {
         if (key === 'faithfulValue') result[key] = parseInt(result[key])
       }
       return result
+    },
+    // 打开弹窗
+    handleOpenDialog (type, userId) {
+      this.visible[type] = true
+      this.handleUserId = userId
+    },
+    // 提交赠送积分
+    async handleAddInteger (value) {
+      const userId = this.handleUserId
+      const res = await this.$api.presentIntegral({ userId, integral: value })
+      console.log(res.data)
     },
     // 判断是否没有任何认证信息
     unAuth (row) {

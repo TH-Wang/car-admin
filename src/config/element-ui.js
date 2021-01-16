@@ -21,6 +21,9 @@ import {
   Avatar as ElAvatar,
   Image as ElImage,
   Dialog as ElDialog,
+  Dropdown as ElDropdown,
+  DropdownMenu as ElDropdownMenu,
+  DropdownItem as ElDropdownItem,
   Loading
 } from 'element-ui'
 
@@ -47,5 +50,8 @@ export default function (Vue) {
   Vue.use(ElAvatar)
   Vue.use(ElImage)
   Vue.use(ElDialog)
+  Vue.use(ElDropdown)
+  Vue.use(ElDropdownMenu)
+  Vue.use(ElDropdownItem)
   Vue.use(Loading.directive)
 }

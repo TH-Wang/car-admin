@@ -6,6 +6,7 @@ import api from './api'
 import elementConfig from './config/element-ui'
 import antdvConfig from './config/ant-design-vue'
 import TableDisplay from './components/TableDisplay'
+import DropdownButton from './components/DropdownButton'
 import './global.scss'
 // import './mock/index'
 
@@ -18,6 +19,7 @@ elementConfig(Vue)
 antdvConfig(Vue)
 // 自定义
 Vue.use(TableDisplay)
+Vue.use(DropdownButton)
 
 new Vue({
   router,
