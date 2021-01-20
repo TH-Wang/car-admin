@@ -27,6 +27,27 @@ const routes = [
         name: 'UserList',
         component: () => import(/* webpackChunkName: "UserList" */ '@/views/UserList')
       },
+      { // 身份证验证列表
+        path: '/admin/identity',
+        name: 'VertifyIdentity',
+        component: () => import(
+          /* webpackChunkName: "VertifyIdentity" */ '@/views/VertifyIdentity'
+        )
+      },
+      { // 驾驶证验证列表
+        path: '/admin/driving',
+        name: 'VertifyDriving',
+        component: () => import(
+          /* webpackChunkName: "VertifyDriving" */ '@/views/VertifyDriving'
+        )
+      },
+      { // 车辆验证列表
+        path: '/admin/vertifyCar',
+        name: 'VertifyCar',
+        component: () => import(
+          /* webpackChunkName: "VertifyCar" */ '@/views/VertifyCar'
+        )
+      },
       // { // 订单列表
       //   path: '/admin/order',
       //   name: 'OrderList',
@@ -86,6 +107,16 @@ const routes = [
         path: '/admin/ratio',
         name: 'RatioList',
         component: () => import(/* webpackChunkName: "RatioList" */ '@/views/RatioList')
+      },
+      { // 客服信息管理
+        path: '/admin/service',
+        name: 'ServiceConfig',
+        component: () => import(/* webpackChunkName: "ServiceConfig" */ '@/views/ServiceConfig')
+      },
+      { // 用户申诉列表
+        path: '/admin/complaint',
+        name: 'ComplaintList',
+        component: () => import(/* webpackChunkName: "ComplaintList" */ '@/views/ComplaintList')
       }
     ]
   }

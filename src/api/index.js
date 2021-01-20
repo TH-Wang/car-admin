@@ -7,6 +7,9 @@ import checkApi from './check'
 import faithfulApi from './faithful'
 import ratioApi from './ratio'
 import orderApi from './order'
+import serviceApi from './service'
+import verificationApi from './verification'
+import complaintApi from './complaint'
 
 export default {
   ...authApi,
@@ -17,5 +20,8 @@ export default {
   ...checkApi,
   ...faithfulApi,
   ...ratioApi,
-  ...orderApi
+  ...orderApi,
+  ...serviceApi,
+  ...verificationApi,
+  ...complaintApi
 }

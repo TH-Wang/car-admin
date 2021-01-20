@@ -3,7 +3,12 @@ export default [
     key: '1',
     title: '用户管理',
     icon: 'user',
-    path: '/admin/user'
+    children: [
+      { key: '1-1', title: '用户信息', path: '/admin/user' },
+      { key: '1-2', title: '身份证验证', path: '/admin/identity' },
+      { key: '1-3', title: '驾驶证验证', path: '/admin/driving' },
+      { key: '1-4', title: '车辆验证', path: '/admin/vertifyCar' }
+    ]
   },
   {
     key: '2',
@@ -48,14 +53,26 @@ export default [
   },
   {
     key: '7',
+    title: '申诉管理',
+    icon: 'warning',
+    path: '/admin/complaint'
+  },
+  {
+    key: '8',
     title: '诚信值管理',
     icon: 'file-protect',
     path: '/admin/faithful'
   },
   {
-    key: '8',
+    key: '9',
     title: '收益比例',
     icon: 'pay-circle',
     path: '/admin/ratio'
+  },
+  {
+    key: '10',
+    title: '客服管理',
+    icon: 'customer-service',
+    path: '/admin/service'
   }
 ]

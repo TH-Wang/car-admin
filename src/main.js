@@ -7,6 +7,7 @@ import elementConfig from './config/element-ui'
 import antdvConfig from './config/ant-design-vue'
 import TableDisplay from './components/TableDisplay'
 import DropdownButton from './components/DropdownButton'
+import StateFilter from './components/StateFilter'
 import './global.scss'
 // import './mock/index'
 
@@ -20,6 +21,7 @@ antdvConfig(Vue)
 // 自定义
 Vue.use(TableDisplay)
 Vue.use(DropdownButton)
+Vue.use(StateFilter)
 
 new Vue({
   router,
