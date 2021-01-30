@@ -16,12 +16,15 @@ export default [
     icon: 'rise',
     path: '/admin/line'
   },
-  // {
-  //   key: '3',
-  //   title: '订单管理',
-  //   icon: 'snippets',
-  //   path: '/admin/order'
-  // },
+  {
+    key: '3',
+    title: '信息管理',
+    icon: 'snippets',
+    children: [
+      { key: '3-1', title: '车主发布信息', path: '/admin/publish/driver' },
+      { key: '3-2', title: '乘客发布信息', path: '/admin/publish/customer' }
+    ]
+  },
   {
     key: '4',
     title: '旅游管理',

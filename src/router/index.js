@@ -58,6 +58,16 @@ const routes = [
         name: 'LineList',
         component: () => import(/* webpackChunkName: "LineList" */ '@/views/LineList')
       },
+      { // 车主发布列表
+        path: '/admin/publish/driver',
+        name: 'DriverPublish',
+        component: () => import(/* webpackChunkName: "DriverPublish" */ '@/views/DriverPublish')
+      },
+      { // 乘客发布列表
+        path: '/admin/publish/customer',
+        name: 'CustomerPublish',
+        component: () => import(/* webpackChunkName: "CustomerPublish" */ '@/views/CustomerPublish')
+      },
       { // 旅游列表
         path: '/admin/tour',
         name: 'TourList',

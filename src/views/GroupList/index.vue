@@ -57,8 +57,10 @@ export default {
         pageSize: size,
         state
       })
-      const { list, total } = res.data.data
-      return { data: list, total }
+      // const { list, total } = res.data.data
+      // return { data: list, total }
+      const data = res.data.data
+      return { data, total: data.length }
     },
     // 审核通过
     async handleCheck (id, state) {

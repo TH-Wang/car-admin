@@ -11,6 +11,8 @@ import serviceApi from './service'
 import verificationApi from './verification'
 import complaintApi from './complaint'
 import positionApi from './position'
+import publishApi from './publish'
+import shortLinkApi from './shortLink'
 
 export default {
   ...authApi,
@@ -25,5 +27,7 @@ export default {
   ...serviceApi,
   ...verificationApi,
   ...complaintApi,
-  ...positionApi
+  ...positionApi,
+  ...publishApi,
+  ...shortLinkApi
 }
