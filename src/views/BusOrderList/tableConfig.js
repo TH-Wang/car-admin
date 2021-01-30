@@ -1,3 +1,5 @@
+import moment from 'moment'
+
 export default [
   {
     type: 'expand',
@@ -17,8 +19,9 @@ export default [
     label: '人数'
   },
   {
-    prop: 'userNum',
-    label: '人数'
+    prop: 'startTime',
+    label: '使用时间',
+    formatter: (row, column, value) => moment(value).format('MM月DD日 HH:mm')
   },
   {
     label: '支付状态',

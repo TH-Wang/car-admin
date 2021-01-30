@@ -3,6 +3,8 @@
     <!-- 顶部 -->
     <a-space size="large" style="margin-bottom: 10px">
       <el-button size="small" type="primary" @click="handleAdd">添加类别</el-button>
+      <search-address v-model="address" />
+      <span>{{address.value}}</span>
     </a-space>
     <table-display
       ref="table"
@@ -48,7 +50,8 @@ export default {
     visible: false,
     columns: tableConfig,
     list: [],
-    form: {}
+    form: {},
+    address: {}
   }),
   methods: {
     // 请求列表

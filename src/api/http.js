@@ -13,8 +13,10 @@ const safeUrl = [
   '/position/queryPositionForCounty'
 ]
 
+// 正式服务器
+axios.defaults.baseURL = 'http://pinchezhijia.com/api'
 // 全局配置（线上）
-axios.defaults.baseURL = 'http://39.102.65.132:8089'
+// axios.defaults.baseURL = 'http://39.102.65.132:8089'
 // axios.defaults.baseURL = 'http://www.pinchezhijia.com'
 // 域名
 // axios.defaults.baseURL = 'http://www.pinchezhijia.com/api'

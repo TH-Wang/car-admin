@@ -23,6 +23,12 @@
 import { isInteger } from 'lodash'
 
 export default {
+  props: {
+    config: {
+      type: Array,
+      default: null
+    }
+  },
   data: () => ({
     state: null,
     options: [
@@ -36,6 +42,11 @@ export default {
       const state = isInteger(value) ? value : null
       this.state = state
       this.$emit('change', state)
+    }
+  },
+  created () {
+    if (this.config) {
+      this.options = this.config
     }
   }
 }

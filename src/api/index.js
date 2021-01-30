@@ -10,6 +10,7 @@ import orderApi from './order'
 import serviceApi from './service'
 import verificationApi from './verification'
 import complaintApi from './complaint'
+import positionApi from './position'
 
 export default {
   ...authApi,
@@ -23,5 +24,6 @@ export default {
   ...orderApi,
   ...serviceApi,
   ...verificationApi,
-  ...complaintApi
+  ...complaintApi,
+  ...positionApi
 }

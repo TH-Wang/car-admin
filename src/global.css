@@ -6,6 +6,14 @@
   width: 100%;
 }
 
+.el-cascader-panel {
+  height: 200px;
+}
+
+.header {
+  margin-bottom: 15px;
+}
+
 .table-expand div {
   margin-bottom: 10px;
 }
@@ -24,6 +32,7 @@
 
 .table-expand div img {
   max-width: 300px;
+  margin-right: 10px;
   vertical-align: top;
 }
 

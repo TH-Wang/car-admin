@@ -8,8 +8,6 @@
     <!-- 详情 -->
     <template #expand="{row}">
       <div class="table-expand">
-        <div><span class="label">开始使用时间：</span>{{row.startTime}}</div>
-        <div><span class="label">结束使用时间：</span>{{row.endTime}}</div>
         <div><span class="label">支付金额：</span>{{row.price}}</div>
         <div><span class="label">支付方式：</span>
           <strong :style="{color: payType[row.payType].color}">

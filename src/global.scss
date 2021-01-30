@@ -4,6 +4,17 @@
 .el-avatar>img{
   width: 100%;
 }
+.el-cascader-panel {
+  height: 200px;
+}
+.el-scrollbar__wrap{
+  // overflow-x: hidden;
+}
+
+// 顶部筛选搜索栏
+.header{
+  margin-bottom: 15px;
+}
 
 // 表格详情
 .table-expand div {
@@ -23,6 +34,7 @@
 
   img{
     max-width: 300px;
+    margin-right: 10px;
     vertical-align: top;
   }
 }

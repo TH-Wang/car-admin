@@ -8,13 +8,15 @@ import {
   message as AMessage
 } from 'ant-design-vue'
 
-export default function (Vue) {
-  Vue.use(AMenu)
-  Vue.use(AIcon)
-  Vue.use(ASpin)
-  Vue.use(ATag)
-  Vue.use(ASpace)
-  Vue.use(AModal)
+export default {
+  install: function (Vue) {
+    Vue.use(AMenu)
+    Vue.use(AIcon)
+    Vue.use(ASpin)
+    Vue.use(ATag)
+    Vue.use(ASpace)
+    Vue.use(AModal)
 
-  Vue.prototype.$message = AMessage
+    Vue.prototype.$message = AMessage
+  }
 }

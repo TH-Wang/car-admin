@@ -18,12 +18,13 @@
           <div>
             <span class="label">车辆行驶证：</span>
             <img :src="row.carTravelPhoto" v-if="row.carTravelPhoto" />
-            <span v-else>未上传</span>
+            <img :src="row.carTravelPhotoBack" v-if="row.carTravelPhotoBack" />
+            <!-- <span v-else>未上传</span> -->
           </div>
           <div>
             <span class="label">车正面照：</span>
             <img :src="row.carPhoto" v-if="row.carPhoto" />
-            <span v-else>未上传</span>
+            <!-- <span v-else>未上传</span> -->
           </div>
         </div>
       </template>

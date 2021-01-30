@@ -13,19 +13,16 @@
       <template #expand="{row}">
         <div class="table-expand">
           <div>
-            <span class="label">身份证正面：</span>
+            <span class="label">身份证照：</span>
             <img :src="row.identityCardFront" v-if="row.identityCardFront" />
-            <span v-else>未上传</span>
-          </div>
-          <div>
-            <span class="label">身份证背面：</span>
             <img :src="row.identityCardBack" v-if="row.identityCardBack" />
-            <span v-else>未上传</span>
+            <!-- <span v-else>未上传</span> -->
           </div>
           <div>
-            <span class="label">驾驶证：</span>
+            <span class="label">驾驶证照：</span>
             <img :src="row.userDrivingCard" v-if="row.userDrivingCard" />
-            <span v-else>未上传</span>
+            <img :src="row.userDrivingCardBack" v-if="row.userDrivingCardBack" />
+            <!-- <span v-else>未上传</span> -->
           </div>
         </div>
       </template>

@@ -13,6 +13,8 @@ import {
   Checkbox as ElCheckbox,
   Upload as ElUpload,
   DatePicker as ElDatePicker,
+  Cascader as ElCascader,
+  Autocomplete as ElAutocomplete,
   Table as ElTable,
   TableColumn as ElTableColumn,
   Pagination as ElPagination,
@@ -27,31 +29,35 @@ import {
   Loading
 } from 'element-ui'
 
-export default function (Vue) {
-  Vue.use(ElButton)
-  Vue.use(ElButtonGroup)
-  Vue.use(ElContainer)
-  Vue.use(ElHeader)
-  Vue.use(ElAside)
-  Vue.use(ElMain)
-  Vue.use(ElForm)
-  Vue.use(ElFormItem)
-  Vue.use(ElInput)
-  Vue.use(ElSelect)
-  Vue.use(ElOption)
-  Vue.use(ElUpload)
-  Vue.use(ElCheckbox)
-  Vue.use(ElDatePicker)
-  Vue.use(ElTable)
-  Vue.use(ElTableColumn)
-  Vue.use(ElPagination)
-  Vue.use(ElPopconfirm)
-  Vue.use(ElPopover)
-  Vue.use(ElAvatar)
-  Vue.use(ElImage)
-  Vue.use(ElDialog)
-  Vue.use(ElDropdown)
-  Vue.use(ElDropdownMenu)
-  Vue.use(ElDropdownItem)
-  Vue.use(Loading.directive)
+export default {
+  install: function (Vue) {
+    Vue.use(ElButton)
+    Vue.use(ElButtonGroup)
+    Vue.use(ElContainer)
+    Vue.use(ElHeader)
+    Vue.use(ElAside)
+    Vue.use(ElMain)
+    Vue.use(ElForm)
+    Vue.use(ElFormItem)
+    Vue.use(ElInput)
+    Vue.use(ElSelect)
+    Vue.use(ElOption)
+    Vue.use(ElUpload)
+    Vue.use(ElCheckbox)
+    Vue.use(ElDatePicker)
+    Vue.use(ElCascader)
+    Vue.use(ElAutocomplete)
+    Vue.use(ElTable)
+    Vue.use(ElTableColumn)
+    Vue.use(ElPagination)
+    Vue.use(ElPopconfirm)
+    Vue.use(ElPopover)
+    Vue.use(ElAvatar)
+    Vue.use(ElImage)
+    Vue.use(ElDialog)
+    Vue.use(ElDropdown)
+    Vue.use(ElDropdownMenu)
+    Vue.use(ElDropdownItem)
+    Vue.use(Loading.directive)
+  }
 }

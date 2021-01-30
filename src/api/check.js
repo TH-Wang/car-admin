@@ -1,5 +1,5 @@
 import axios from './http'
-import { getUserId } from './utils'
+// import { getUserId } from './utils'
 
 export default {
   auditCheck,
@@ -17,8 +17,15 @@ function auditCheck (params) {
 }
 
 // 查询拼车群列表
-function getGroupList (data) {
-  return axios.post('/audit/groupList', { ...data, userId: getUserId() })
+// function getGroupList (data) {
+//   return axios.post('/audit/groupList', { ...data, userId: getUserId() })
+// }
+function getGroupList (params) {
+  return axios({
+    url: '/web/groupCheck/queryGroup',
+    method: 'POST',
+    params
+  })
 }
 
 // 查询站长列表
