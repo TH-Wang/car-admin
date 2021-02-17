@@ -33,6 +33,13 @@ const config = [
     label: '信用分'
   },
   {
+    prop: 'integral',
+    label: '积分',
+    formatter: (row, column, cellValue) => {
+      return cellValue || 0
+    }
+  },
+  {
     label: '认证',
     scopedSlot: 'auth',
     width: 220

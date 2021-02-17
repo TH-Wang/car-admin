@@ -23,6 +23,7 @@
   font-weight: bold;
   width: 100px;
   display: inline-block;
+  vertical-align: top;
 }
 
 .table-expand div strong {

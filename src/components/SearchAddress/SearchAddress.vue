@@ -106,7 +106,9 @@ export default {
   },
   watch: {
     cityname: function (newVal) {
-      this.placeSearch = new window.AMap.PlaceSearch({ city: newVal })
+      if (window.AMap) {
+        this.placeSearch = new window.AMap.PlaceSearch({ city: newVal })
+      }
     },
     value: function (newVal) {
       this.state = newVal.pointName

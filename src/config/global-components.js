@@ -3,6 +3,7 @@ import DropdownButton from '@/components/DropdownButton'
 import StateFilter from '@/components/StateFilter'
 import SearchAddress from '@/components/SearchAddress'
 import DynamicField from '@/components/DynamicField'
+import FormUpload from '@/components/FormUpload'
 
 export default {
   install: function (Vue) {
@@ -11,5 +12,6 @@ export default {
     Vue.use(StateFilter)
     Vue.use(DynamicField)
     Vue.use(SearchAddress)
+    Vue.use(FormUpload)
   }
 }

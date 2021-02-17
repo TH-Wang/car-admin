@@ -7,6 +7,16 @@ export default [
     scopedSlot: 'expand'
   },
   {
+    prop: 'passPointList',
+    label: '出发地点',
+    formatter: (row, column, value, index) => value.find(i => i.type === 1).pointName
+  },
+  {
+    prop: 'passPointList',
+    label: '到达地点',
+    formatter: (row, column, value, index) => value.find(i => i.type === 3).pointName
+  },
+  {
     prop: 'username',
     label: '车主',
     width: 100
@@ -39,16 +49,6 @@ export default [
     prop: 'startTime',
     label: '出发时间',
     formatter: (row, column, value, index) => moment(value).format('MM月DD日 HH:mm')
-  },
-  {
-    prop: 'passPointList',
-    label: '出发地点',
-    formatter: (row, column, value, index) => value.find(i => i.type === 1).pointName
-  },
-  {
-    prop: 'passPointList',
-    label: '到达地点',
-    formatter: (row, column, value, index) => value.find(i => i.type === 3).pointName
   },
   {
     label: '状态',

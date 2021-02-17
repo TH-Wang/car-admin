@@ -14,19 +14,20 @@
         <el-input v-model="form.username" placeholder="请输入用户名" />
       </el-form-item>
 
-      <el-form-item label="图片">
-        <el-upload
-          :action="uploadUrl"
-          name="file"
-          :show-file-list="false"
-          :on-success="handleFileSuccess">
-          <el-button type="primary" size="small">选择图片</el-button>
-        </el-upload>
-        <div><img class="upload-img" :src="headimg" alt=""/></div>
+      <el-form-item label="头像">
+        <form-upload v-model="form.headimg" />
       </el-form-item>
 
       <el-form-item label="手机号码">
         <el-input v-model="form.phone" placeholder="请输入手机号码" />
+      </el-form-item>
+
+      <el-form-item label="信用分">
+        <el-input type="number" v-model="form.faithfulValue" placeholder="请输入信用分" />
+      </el-form-item>
+
+      <el-form-item label="积分">
+        <el-input type="number" v-model="form.integral" placeholder="请输入积分" />
       </el-form-item>
     </el-form>
     <!-- 弹窗底部 -->
@@ -43,8 +44,6 @@
 </template>
 
 <script>
-import { file } from '@/config/base-url'
-
 export default {
   props: {
     mode: {
@@ -61,18 +60,14 @@ export default {
     }
   },
   data: () => ({
-    form: {},
-    headimg: '',
-    uploadUrl: file
+    form: {}
   }),
   methods: {
     reset () {
       this.form = {}
-      this.headimg = ''
     },
     setFields (data) {
       this.form = data
-      this.headimg = data.headimg
     },
     handleConfirm () {
       this.$emit('submit', this.form)

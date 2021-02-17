@@ -7,6 +7,16 @@ export default [
     align: 'center'
   },
   {
+    prop: 'startAddr',
+    label: '出发地点'
+    // formatter: (row, column, value, index) => value.find(i => i.type === 1).pointName
+  },
+  {
+    prop: 'endAddr',
+    label: '到达地点'
+    // formatter: (row, column, value, index) => value.find(i => i.type === 3).pointName
+  },
+  {
     prop: 'username',
     label: '乘客',
     width: 100
@@ -35,16 +45,6 @@ export default [
     label: '出发时间',
     width: 150,
     formatter: (row, column, value, index) => moment(value).format('MM月DD日 HH:mm')
-  },
-  {
-    prop: 'startAddr',
-    label: '出发地点'
-    // formatter: (row, column, value, index) => value.find(i => i.type === 1).pointName
-  },
-  {
-    prop: 'endAddr',
-    label: '到达地点'
-    // formatter: (row, column, value, index) => value.find(i => i.type === 3).pointName
   }
   // {
   //   label: '操作',

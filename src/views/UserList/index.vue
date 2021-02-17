@@ -38,10 +38,10 @@
             :size="tableSize"
             @click="handleUpdate(row.id)"
           >修改</el-button>
-          <dropdown-button
+          <!-- <dropdown-button
             :menus="handleMenus"
             @add-integer="handleOpenDialog('addInteger', row.id)"
-          >更多</dropdown-button>
+          >更多</dropdown-button> -->
         </a-space>
       </template>
     </table-display>

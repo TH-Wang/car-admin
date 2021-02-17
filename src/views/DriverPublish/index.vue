@@ -62,7 +62,7 @@ export default {
     form: {},
     stateType: {
       1: '<span style="color: #409EFF">进行中</span>',
-      2: '<span style="color: #999999">以撤下</span>',
+      2: '<span style="color: #999999">已撤下</span>',
       3: '<span style="color: #999999">已完成</span>'
     }
   }),
@@ -125,14 +125,14 @@ export default {
     // 处理请求数据
     handleParams (values) {
       const data = cloneDeep(values)
-      // 判断发布类型
-      data.publishType = this.judgeType(data)
       // 起点终点、途径点
       const { startAddr, endAddr } = data
       data.passPointList = data.passPointList.map(i => ({ ...i, type: 2 }))
       data.passPointList.unshift({ ...startAddr, type: 1 })
       data.passPointList.push({ ...endAddr, type: 3 })
       data.passPointList = data.passPointList.map((i, idx) => ({ ...i, sort: idx }))
+      // 判断发布类型
+      data.publishType = this.judgeType(data)
       delete data.startAddr
       delete data.endAddr
       return data
